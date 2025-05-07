@@ -235,7 +235,7 @@ export default function MatrixOperations() {
                   </div>
                 </div>
               ) : (
-                <p className="text-muted-foreground">No statistics available. Click "Get Stats" to calculate.</p>
+                <p className="text-muted-foreground">No statistics available. Click Get Stats to calculate.</p>
               )}
             </CardContent>
           </Card>
