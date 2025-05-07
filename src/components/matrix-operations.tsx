@@ -10,7 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2, RefreshCw } from "lucide-react"
 
-const API_BASE_URL = "http://137.184.33.212:8000/api"
+const API_BASE_URL = "http://137.184.33.212:8000"
 
 const matrixExamples = {
   matrix2x2: {
@@ -64,7 +64,7 @@ export default function MatrixOperations() {
       setIsLoading(true)
 
       const res = await axios.post(
-        `${API_BASE_URL}/factorize`,
+        `${API_BASE_URL}/api/factorize`,
         { matrix },
         {
           headers: {
@@ -94,7 +94,7 @@ export default function MatrixOperations() {
       setIsLoading(true)
 
       const res = await axios.post(
-        `${API_BASE_URL}/rotate`,
+        `${API_BASE_URL}/api/rotate`,
         {
           qMatrix: Q,
           rMatrix: R,
