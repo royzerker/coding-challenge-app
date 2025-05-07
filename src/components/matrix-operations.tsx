@@ -9,49 +9,17 @@ import { Textarea } from "@/components/ui/textarea"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { AlertCircle, Loader2, RefreshCw } from "lucide-react"
+import { StatsResponse } from "@/interfaces/matrix.interface"
+import { matrixExamples } from "@/data/example"
 
-const API_BASE_URL = "http://137.184.33.212:8000"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:3000"
 
-const matrixExamples = {
-  matrix2x2: {
-    name: "2x2 Matrix",
-    matrix: [
-      [1, 2],
-      [3, 4],
-    ],
-  },
-  matrix3x2: {
-    name: "3x2 Matrix",
-    matrix: [
-      [1, 2],
-      [3, 4],
-      [5, 6],
-    ],
-  },
-  matrix3x3: {
-    name: "3x3 Matrix",
-    matrix: [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-    ],
-  },
-  matrix4x2: {
-    name: "4x2 Matrix",
-    matrix: [
-      [1, 2],
-      [3, 4],
-      [5, 6],
-      [7, 8],
-    ],
-  },
-}
 
 export default function MatrixOperations() {
   const [matrix, setMatrix] = useState<number[][]>([])
   const [Q, setQ] = useState<number[][]>([])
   const [R, setR] = useState<number[][]>([])
-  const [stats, setStats] = useState<any>(null)
+  const [stats, setStats] = useState<StatsResponse | null>(null)
   const [token, setToken] = useState<string>("")
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -87,6 +55,7 @@ export default function MatrixOperations() {
       setIsLoading(false)
     }
   }
+
 
   const handleRotate = async () => {
     try {
@@ -249,7 +218,7 @@ export default function MatrixOperations() {
             </Card>
           </div>
 
-          {stats && stats.length > 0 && (
+          {stats  && (
             <Card className="mb-6">
               <CardHeader>
                 <CardTitle>Matrix Statistics</CardTitle>
